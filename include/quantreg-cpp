@@ -1,0 +1,55 @@
+// 3-Clause BSD License
+//
+// Copyright (c) 2023 Renaud AUBIN
+//
+// Redistribution and use in source and binary forms, with or without modification, are permitted
+// provided that the following conditions are met:
+//
+// 1. Redistributions of source code must retain the above copyright notice, this list of conditions
+//    and the following disclaimer.
+//
+// 2. Redistributions in binary form must reproduce the above copyright notice, this list of
+//    conditions and the following disclaimer in the documentation and/or other materials provided
+//    with the distribution.
+//
+// 3. Neither the name of the copyright holder nor the names of its contributors may be used to
+//    endorse or promote products derived from this software without specific prior written
+//    permission.
+//
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR
+// IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+// FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+// CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+// WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+// This is a C++ implementation of the Frisch-Newton algorithm and the preprocessing phase of the rq
+// algorithm as described in Portnoy and Koenker, Statistical Science, (1997) 279-300.
+// Original version consists in the Roger Koenker's quantreg R package rq.fit.pfn and rq.fit.fnb
+// functions (quantreg.R) and the rqfnb fortran function (rqfnb.f). Quantreg R package repository:
+// https://github.com/cran/quantreg.
+// Translated and adapted to C++ / Rcpp / RcppArmadillo by Dajun Xu, under the instructions of
+// Stephen L. Portnoy, 2015. Repository: https://github.com/xdj701/STAT391-Quantreg.
+// Adapted to C++ & Armadillo by Renaud Aubin, 2023.
+//
+// This file is released under the 3-Clause BSD License, although the original versions were
+// not. Permissions was given by Professor Roger Koenker and Dajun Xu to Renaud Aubin on May/June
+// 2023 via electronic correspondences.
+// Original correspondences can be provided upon request.
+//
+
+#ifndef QUANTREG_CPP_INCLUDES
+#define QUANTREG_CPP_INCLUDES
+
+#include <tuple>
+
+#include <armadillo>
+
+namespace quantreg {
+auto qr(const arma::mat& X, const arma::vec& y, double tau = 0.5, double Mm_factor = 0.8,
+        int max_bad_fixup = 3, double eps = 1e-06) -> std::tuple<arma::vec, arma::vec>;
+}  // namespace quantreg
+
+#endif

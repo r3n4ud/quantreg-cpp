@@ -1,0 +1,5 @@
+.release.cmake
+build
+_install
+build-*
+tests/Testing
