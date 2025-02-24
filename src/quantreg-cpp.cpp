@@ -1,6 +1,6 @@
 // 3-Clause BSD License
 //
-// Copyright (c) 2023 Renaud AUBIN
+// Copyright (c) 2023-2025 Renaud AUBIN
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted
 // provided that the following conditions are met:
@@ -205,7 +205,6 @@ std::tuple<arma::vec, arma::vec> qr(const arma::mat& X, const arma::vec& y, doub
           }
           if (arma::sum(or_bad) > 0.1 * M) {
             // warning("Too many fixups: doubling m");
-            std::cout << "WARNING (pending proper logging) -- Too many fixups: doubling m";
             m = 2 * m;
             break;
           }
