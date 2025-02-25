@@ -26,10 +26,9 @@ endif()
 if (NOT BUILD_SHARED_LIBS)
   set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
   ### armadillo without wrapper => target_compile_definitions(TARGET PRIVATE ARMA_DONT_USE_WRAPPER)
-  set(BLA_VENDOR OpenBLAS)
-  set(BLA_STATIC ON)
+  set(OpenBLAS_USE_STATIC_LIBS ON)
   set(CMAKE_EXE_LINKER_FLAGS "-static")
-  find_package(BLAS REQUIRED)
+  find_package(OpenBLAS REQUIRED)
 endif ()
 
 ### libhdf5
@@ -110,7 +109,7 @@ if (BUILD_SHARED_LIBS)
   target_link_libraries(quantreg-cpp PUBLIC ${ARMADILLO_LIBRARIES})
 else ()
   target_compile_definitions(quantreg-cpp PUBLIC ARMA_DONT_USE_WRAPPER)
-  target_link_libraries(quantreg-cpp PUBLIC BLAS::BLAS)
+  target_link_libraries(quantreg-cpp PUBLIC ${OpenBLAS_LIBRARIES})
 endif ()
 
 ## Generate the export header for quantreg and attach it to the target
