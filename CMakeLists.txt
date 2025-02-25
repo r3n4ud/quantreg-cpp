@@ -33,7 +33,7 @@ if (NOT BUILD_SHARED_LIBS)
 endif ()
 
 ### libhdf5
-find_package(HDF5 1.14.0 REQUIRED)
+find_package(HDF5 1.14.0 REQUIRED CXX)
 
 #### The following is always required to get the include dir of Armadillo!
 if(DEFINED ENV{Armadillo_ROOT})
